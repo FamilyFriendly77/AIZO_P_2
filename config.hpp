@@ -19,10 +19,6 @@ public:
   static Setting<bool> printAfterGenerating;
   static Setting<bool> printAfterSolving;
   static Setting<bool> testIfSolved;
-  static Setting<bool> testINT;
-  static Setting<bool> testFLOAT;
-  static Setting<bool> testDOUBLE;
-  static Setting<bool> testCHAR;
   static void loadConfigFromFile();
   static void setConfigFile(std::string filename);
 };
