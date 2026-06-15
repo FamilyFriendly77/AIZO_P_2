@@ -1,9 +1,10 @@
 #include "DataUtility.hpp"
-#include "Edge.hpp"
 #include "Graph.hpp"
 #include <cstdlib>
+#include <fstream>
+#include <iostream>
 void DataUtility::generateGraph(int V, float density, int *matrixDestination,
-                                int **listDestination) {
+                                Edge **listDestination) {
 
   int *tempMatrix = (int *)std::malloc(V * V * sizeof(int));
   Edge **tempList = (Edge **)std::malloc(V * (sizeof(Edge *)));
@@ -39,3 +40,4 @@ void DataUtility::generateGraph(int V, float density, int *matrixDestination,
     tempList[i] = tempNeighbourList;
   }
 }
+void DataUtility::readGraph(int *matrixDestination, Edge **listDestination) {}
