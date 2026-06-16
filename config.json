@@ -1,0 +1,18 @@
+{
+  "testMode": false,
+  "testFilename": "tests.txt",
+  "testCasesNodeCounts": [
+    10,
+    25,
+    50
+  ],
+  "testCasesDensities": [
+    0.25,
+    0.5,
+    0.99
+  ],
+  "testRepetitionCounter": 50,
+  "printAfterSolving": true,
+  "printAfterGenerating": true,
+  "testAlg": "ALL"
+}

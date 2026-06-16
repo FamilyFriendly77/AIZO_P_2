@@ -5,31 +5,29 @@
 using json = nlohmann::json;
 
 Setting<int> Config::randomSeed = Setting<int>("randomSeed");
-
 Setting<bool> Config::inTestMode = Setting<bool>("testMode");
-
 Setting<std::string> Config::testFilename =
     Setting<std::string>("testFilename", "tests.txt");
-
 Setting<std::vector<int>> Config::testCasesNodeCounts =
-    Setting<std::vector<int>>("testCasesNodeCounts ");
-
+    Setting<std::vector<int>>("testCasesNodeCounts");
+Setting<std::vector<double>> Config::testCasesDensities =
+    Setting<std::vector<double>>("testCasesDensities");
 Setting<std::string> Config::configFile =
     Setting<std::string>("configFilename");
 Setting<int> Config::testRepetitionCounter =
     Setting<int>("testRepetitionCounter");
 Setting<bool> Config::printAfterSolving = Setting<bool>("printAfterSolving");
-
 Setting<bool> Config::printAfterGenerating =
     Setting<bool>("printAfterGenerating");
-Setting<std::string> Config::testProblem = Setting<std::string>("testProblem");
+Setting<std::string> Config::testAlg = Setting<std::string>("testAlg");
 Setting<bool> Config::testIfSolved = Setting<bool>("testIfSolved");
+
 void Config::setConfigFile(std::string filename) {
   configFile.setSetting(filename);
 }
+
 void Config::loadConfigFromFile() {
   std::ifstream f(Config::configFile.getValue());
-  // checking if file opens, if not, throw an error because it can't be read
   if (!f.is_open()) {
     throw std::runtime_error(
         "Specified config file does not exits or can't be opened");
@@ -46,11 +44,14 @@ void Config::loadConfigFromFile() {
   testFilename.setSetting(config.value(testFilename.getLabel(), "test.txt"));
   testCasesNodeCounts.setSetting(
       config.value(testCasesNodeCounts.getLabel(), std::vector<int>{}));
+  testCasesDensities.setSetting(
+      config.value(testCasesDensities.getLabel(), std::vector<double>{}));
   testRepetitionCounter.setSetting(
       config.value(testRepetitionCounter.getLabel(), 100));
   printAfterSolving.setSetting(
       config.value(printAfterSolving.getLabel(), true));
   printAfterGenerating.setSetting(
       config.value(printAfterGenerating.getLabel(), true));
+  testAlg.setSetting(config.value(testAlg.getLabel(), "ALL"));
   testIfSolved.setSetting(config.value(testIfSolved.getLabel(), true));
 }

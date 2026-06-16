@@ -1,7 +1,11 @@
 #include "Edge.hpp"
+#include "Graph.hpp"
+#include <string>
 class DataUtility {
+private:
+  static Edge **neighbourListFromMatrix(int *matrix, int V, int *&outSizes);
+
 public:
-  void generateGraph(int V, float density, int *matrixDestination,
-                     Edge **listDestination);
-  void readGraph(int *matrixDestionation, Edge **listDestionation);
+  Graph generateGraph(int V, float density, bool isDirected);
+  Graph readGraph(std::string filename, bool isDirected);
 };

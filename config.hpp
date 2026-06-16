@@ -14,8 +14,9 @@ public:
   static Setting<bool> inTestMode;
   static Setting<std::string> testFilename;
   static Setting<std::vector<int>> testCasesNodeCounts;
+  static Setting<std::vector<double>> testCasesDensities;
   static Setting<int> testRepetitionCounter;
-  static Setting<std::string> testProblem;
+  static Setting<std::string> testAlg;
   static Setting<bool> printAfterGenerating;
   static Setting<bool> printAfterSolving;
   static Setting<bool> testIfSolved;
