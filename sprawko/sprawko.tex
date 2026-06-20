@@ -1,0 +1,123 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plotting Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepgfplotslibrary{colorbrewer}
+\pgfplotsset{width=8cm,compat=1.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Badanie efektywności algorytmów grafowych w zależności od rozmiaru grafu i sposobu reprezentacji}
+\author{Krystian Mikołajczak 284452}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+    \maketitle
+    \section{Wstęp}
+    \subsection{Opis zadania}
+      Celem było zaimplementowanie wybranych algorytmów rozwiązujących problemy grafowe. Rozwiązywane problemy to minimalne drzewo rozpinające i znalezienie najkrótszej ścieżki w grafie.
+      Wyniki efektywności rozwiązywania zadanych problemów za pomocą wybranych algorytmów następnie zostały poddane analizie oraz porównane między sobą. Badana będzie efektywność algorytmów w zależności 
+      od ilości wierzchołków w grafie i od gęstości krawędzi w grafie.
+    \subsection{Algorytmy poddane analizie}
+      Analizie poddano dwa algorytmy dla każdego z dwóch problemów. Każdy z algorytmów został zbadany dla reprezentacji grafu w formie macierzy sąsiedztwa oraz w formie listy następników/poprzedników.  
+    \subsubsection{Minimalne drzewo rozpinające}
+      Jest do drzewo zawierające wszystkie wierzchołki danego grafu o najmniejszej mozliwej sumie wag krawędzi.
+      \begin{itemize}
+      \item{Algorytm Prima}\\
+        Algorytm Prima buduje strukturę krok po kroku, rozpoczynając od wybranego wierzchołka i zachłannie dołączając najlżejsze krawędzie łączące odwiedzoną część grafu z nieodwiedzoną. Implementacja wykorzystująca macierz sąsiedztwa wymaga przeglądania całego wiersza (wszystkich $V$ wierzchołków) przy każdym zdjęciu elementu z kolejki priorytetowej, co daje pesymistyczną złożoność rzędu $O(V^2 \log V)$. Zastosowanie listy następników pozwala z kolei na iterowanie wyłącznie po rzeczywistych krawędziach, co obniża czas do $O(E \log V)$. Zakłada się więc, że reprezentacja listowa będzie znacznie szybsza dla grafów rzadkich, podczas gdy macierzowa może być konkurencyjna w grafach gęstych z uwagi na mniejszy narzut pamięciowy i ciągły układ w pamięci.
+        \cite{Prim}
+      \item{Algorytm Kruskala}\\
+        Algorytm Kruskala początkowo wyodrębnia wszystkie krawędzie grafu, sortuje je według wag w kolejce priorytetowej, a następnie łączy wierzchołki, korzystając ze struktury zbiorów rozłącznych (find-union) w celu unikania cykli. Sposób reprezentacji grafu determinuje narzut na początkowe pozyskanie krawędzi. Odczyt z macierzy sąsiedztwa zmusza algorytm do sprawdzenia każdej możliwej pary wierzchołków ($O(V^2)$), nawet w przypadku braku krawędzi. Zastosowanie listy następników skraca ten proces jedynie do przeglądu istniejących połączeń $O(V + E)$. Oczekuje się zatem przewagi listy na etapie inicjalizacji dla grafów rzadkich, jednak w ostatecznym rozrachunku dla grafów gęstych o czasie wykonania w obu wersjach zadecyduje sam koszt sortowania krawędzi w kolejce ($O(E \log E)$).
+        \cite{Kruskal}
+      \end{itemize}
+    \subsubsection{Znalezienie najkrótszej ścieżki}
+      Znalezienie najkrótszego pod względem sumy wag połączenia między dwoma wierzchołkami w grafie.
+      \begin{itemize}
+        \item{Algorytm Dijkstry}\\
+Algorytm Dijkstry przeszukuje graf za pomocą strategii zachłannej, wyciągając z kolejki priorytetowej wierzchołki o najmniejszym koszcie dotarcia i relaksując ich sąsiadów. Podobnie jak w algorytmie Prima, reprezentacja ma kluczowy wpływ na etap weryfikacji sąsiedztwa. Użycie macierzy sąsiedztwa oznacza konieczność iterowania po wszystkich $V$ wierzchołkach dla każdego analizowanego węzła, co owocuje złożonością czasową w okolicach $O(V^2 \log V)$. Wersja na liście następników filtruje iteracje wyłącznie do fizycznych sąsiadów, osiągając optymalny czas $O(E \log V)$. Przewiduje się, że reprezentacja listowa zdecydowanie zdominuje macierzową w grafach rzadkich, natomiast w sieciach zbliżonych do grafów pełnych różnice w czasie wykonywania ulegną silnemu zatarciu.
+\cite{Dijkstra}
+        \item{Algorytm Forda-Bellmana}\\
+Algorytm Forda-Bellmana, bazujący na programowaniu dynamicznym, opiera się na wykonaniu $V-1$ iteracji, w których próbuje zrelaksować wszystkie połączenia w grafie. Wybór reprezentacji determinuje tu drastyczne różnice w wydajności. W implementacji z macierzą sąsiedztwa mechanizm wymusza sprawdzanie w każdej z iteracji pełnej macierzy $V \times V$, co generuje fatalną w skutkach złożoność sześcienną $O(V^3)$. Zmiana struktury na listę następników sprawia, że w każdej głównej iteracji algorytm przebywa wyłącznie po istniejących krawędziach ($E$), redukując czas do poziomu $O(V \cdot E)$. Oczekuje się, że w przypadku tej metody reprezentacja listowa zmiażdży macierzową pod kątem wydajności na niemal każdym badanym zbiorze danych.
+\cite{Ford-Bellman}
+      \end{itemize}
+
+ \subsection{Charakterystyka danych badawczych}
+ Dane wykorzystane w badaniu zostały wygenerowane przy użyciu generatora liczb pseudolosowych. Podstawowym badanym typem danych dla wag krawędzi jest format liczb całkowitych (int, 4 bajty).
+ Badanie obu algorytmów rozwiązujących ten sam problem zostało przeprowadzone na tych samych instancjach reprezentacji. Oba typy reprezentacji opisują ten sam badany graf.\\
+ \\
+ W badaniu uwzględniono trzy reprezentatywne poziomy gęstości grafu:
+ \begin{itemize}
+   \item{25\%}
+   \item{50\%}
+   \item{99\%}
+ \end{itemize}
+ Badania wykonano dla siedmiu reprezentatywnych rozmiarów grafu: 50, 100, 200, 400, 600, 800, 1000 wierzchołków.
+ Dla każdej kombinacji parametrów badanie wykonano na 50 wygenerowanych instancjach problemu.
+ \section{Warunki badawcze}
+  \subsection{Środowisko badawcze}
+  Badanie zostało przeprowadzone za pomocą autorskiego oprogramowania napisanego w języku
+C++, skompilowanego za pomocą kompilatora Apple Clang w wersji 17.0.0 ,zgodnie ze standardem C++20, stosując standardową konfigurację. Specyfikacja platformy badawczej:
+  \begin{itemize}
+    \item{\textbf{Procesor:} Apple M4, 10 rdzeni (4 rdzenie wydajnościowe, 6 rdzeni energooszczędnych)}
+    \item{\textbf{Pamięć operacyjna:} 16 GB zunifikowanej pamięci RAM}
+  \end{itemize}
+ \begin{thebibliography}{9}
+  \bibitem{Prim}
+ Thomas H. Cormen, Charles E. Leiserson, Ronald L Rivest, Clifford Stein: Wprowadzenie do algorytmów, PWN, 2024, s. 573-574.
+  \bibitem{Kruskal}
+  Thomas H. Cormen, Charles E. Leiserson, Ronald L Rivest, Clifford Stein: Wprowadzenie do algorytmów, PWN, 2024, rozdział 21.
+  \bibitem{Dijkstra}
+  Wikipedia Algorytm Dijkstry - dostęp 19.06.2026 (pl.wikipedia.org/wiki/Algorytm\_Dijkstry)
+  \bibitem{Ford-Bellman}
+ Thomas H. Cormen, Charles E. Leiserson, Ronald L Rivest, Clifford Stein: Wprowadzenie do algorytmów, PWN, 2024, s.664-665.
+\end{thebibliography}
+\end{document}
