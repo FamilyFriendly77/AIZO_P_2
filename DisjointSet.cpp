@@ -9,11 +9,6 @@ DisjointSet::DisjointSet(int n) : n(n) {
   }
 }
 
-DisjointSet::~DisjointSet() {
-  delete[] parent;
-  delete[] rank;
-}
-
 int DisjointSet::find(int i) {
   if (parent[i] == i)
     return i;

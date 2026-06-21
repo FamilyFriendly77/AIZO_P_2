@@ -1,0 +1,184 @@
+--- Performance Testing Mode ---
+Algorithm Selection: ALL
+Repetitions per case: 50
+
+V: 100, D: 25%
+  Avg Prim Matrix:      0.0938808 ms
+  Avg Prim List:        0.0689417 ms
+  Avg Kruskal Matrix:   0.0748284 ms
+  Avg Kruskal List:     0.0632542 ms
+  Avg Dijkstra Matrix:  0.0534442 ms
+  Avg Dijkstra List:    0.0318134 ms
+  Avg Ford-Bell. Matrix:1.90183 ms
+  Avg Ford-Bell. List:  0.421614 ms
+-----------------------------------
+V: 100, D: 50%
+  Avg Prim Matrix:      0.142815 ms
+  Avg Prim List:        0.113469 ms
+  Avg Kruskal Matrix:   0.120208 ms
+  Avg Kruskal List:     0.10085 ms
+  Avg Dijkstra Matrix:  0.0770366 ms
+  Avg Dijkstra List:    0.0422383 ms
+  Avg Ford-Bell. Matrix:2.8973 ms
+  Avg Ford-Bell. List:  0.813966 ms
+-----------------------------------
+V: 100, D: 99%
+  Avg Prim Matrix:      0.201851 ms
+  Avg Prim List:        0.203201 ms
+  Avg Kruskal Matrix:   0.179579 ms
+  Avg Kruskal List:     0.177942 ms
+  Avg Dijkstra Matrix:  0.0586516 ms
+  Avg Dijkstra List:    0.0585183 ms
+  Avg Ford-Bell. Matrix:1.7186 ms
+  Avg Ford-Bell. List:  1.6128 ms
+-----------------------------------
+V: 150, D: 25%
+  Avg Prim Matrix:      0.21793 ms
+  Avg Prim List:        0.156908 ms
+  Avg Kruskal Matrix:   0.169691 ms
+  Avg Kruskal List:     0.142807 ms
+  Avg Dijkstra Matrix:  0.113982 ms
+  Avg Dijkstra List:    0.0627882 ms
+  Avg Ford-Bell. Matrix:7.86283 ms
+  Avg Ford-Bell. List:  1.42457 ms
+-----------------------------------
+V: 150, D: 50%
+  Avg Prim Matrix:      0.343643 ms
+  Avg Prim List:        0.277697 ms
+  Avg Kruskal Matrix:   0.292344 ms
+  Avg Kruskal List:     0.245924 ms
+  Avg Dijkstra Matrix:  0.163936 ms
+  Avg Dijkstra List:    0.0801292 ms
+  Avg Ford-Bell. Matrix:10.2672 ms
+  Avg Ford-Bell. List:  2.84946 ms
+-----------------------------------
+V: 150, D: 99%
+  Avg Prim Matrix:      0.499617 ms
+  Avg Prim List:        0.491167 ms
+  Avg Kruskal Matrix:   0.44509 ms
+  Avg Kruskal List:     0.441197 ms
+  Avg Dijkstra Matrix:  0.109571 ms
+  Avg Dijkstra List:    0.106968 ms
+  Avg Ford-Bell. Matrix:5.76411 ms
+  Avg Ford-Bell. List:  5.54997 ms
+-----------------------------------
+V: 200, D: 25%
+  Avg Prim Matrix:      0.357832 ms
+  Avg Prim List:        0.249155 ms
+  Avg Kruskal Matrix:   0.274546 ms
+  Avg Kruskal List:     0.22399 ms
+  Avg Dijkstra Matrix:  0.187983 ms
+  Avg Dijkstra List:    0.0943991 ms
+  Avg Ford-Bell. Matrix:20.3562 ms
+  Avg Ford-Bell. List:  3.45603 ms
+-----------------------------------
+V: 200, D: 50%
+  Avg Prim Matrix:      0.548975 ms
+  Avg Prim List:        0.428405 ms
+  Avg Kruskal Matrix:   0.461171 ms
+  Avg Kruskal List:     0.379422 ms
+  Avg Dijkstra Matrix:  0.272566 ms
+  Avg Dijkstra List:    0.122839 ms
+  Avg Ford-Bell. Matrix:29.9594 ms
+  Avg Ford-Bell. List:  6.66262 ms
+-----------------------------------
+V: 200, D: 99%
+  Avg Prim Matrix:      0.78062 ms
+  Avg Prim List:        0.777524 ms
+  Avg Kruskal Matrix:   0.690655 ms
+  Avg Kruskal List:     0.688594 ms
+  Avg Dijkstra Matrix:  0.171432 ms
+  Avg Dijkstra List:    0.164583 ms
+  Avg Ford-Bell. Matrix:13.7401 ms
+  Avg Ford-Bell. List:  13.0056 ms
+-----------------------------------
+V: 250, D: 25%
+  Avg Prim Matrix:      0.573456 ms
+  Avg Prim List:        0.399583 ms
+  Avg Kruskal Matrix:   0.437672 ms
+  Avg Kruskal List:     0.352164 ms
+  Avg Dijkstra Matrix:  0.285549 ms
+  Avg Dijkstra List:    0.13844 ms
+  Avg Ford-Bell. Matrix:41.6476 ms
+  Avg Ford-Bell. List:  7.01592 ms
+-----------------------------------
+V: 250, D: 50%
+  Avg Prim Matrix:      0.878311 ms
+  Avg Prim List:        0.684283 ms
+  Avg Kruskal Matrix:   0.735626 ms
+  Avg Kruskal List:     0.607195 ms
+  Avg Dijkstra Matrix:  0.409034 ms
+  Avg Dijkstra List:    0.17339 ms
+  Avg Ford-Bell. Matrix:66.3278 ms
+  Avg Ford-Bell. List:  13.2467 ms
+-----------------------------------
+V: 250, D: 99%
+  Avg Prim Matrix:      1.27465 ms
+  Avg Prim List:        1.25896 ms
+  Avg Kruskal Matrix:   1.13091 ms
+  Avg Kruskal List:     1.12607 ms
+  Avg Dijkstra Matrix:  0.243401 ms
+  Avg Dijkstra List:    0.232603 ms
+  Avg Ford-Bell. Matrix:26.5953 ms
+  Avg Ford-Bell. List:  25.1822 ms
+-----------------------------------
+V: 300, D: 25%
+  Avg Prim Matrix:      0.829225 ms
+  Avg Prim List:        0.586318 ms
+  Avg Kruskal Matrix:   0.641952 ms
+  Avg Kruskal List:     0.528819 ms
+  Avg Dijkstra Matrix:  0.384708 ms
+  Avg Dijkstra List:    0.172732 ms
+  Avg Ford-Bell. Matrix:73.7418 ms
+  Avg Ford-Bell. List:  11.3933 ms
+-----------------------------------
+V: 300, D: 50%
+  Avg Prim Matrix:      1.32282 ms
+  Avg Prim List:        1.03586 ms
+  Avg Kruskal Matrix:   1.11885 ms
+  Avg Kruskal List:     0.935503 ms
+  Avg Dijkstra Matrix:  0.563972 ms
+  Avg Dijkstra List:    0.224345 ms
+  Avg Ford-Bell. Matrix:120.436 ms
+  Avg Ford-Bell. List:  23.06 ms
+-----------------------------------
+V: 300, D: 99%
+  Avg Prim Matrix:      1.9249 ms
+  Avg Prim List:        1.9011 ms
+  Avg Kruskal Matrix:   1.71994 ms
+  Avg Kruskal List:     1.71845 ms
+  Avg Dijkstra Matrix:  0.315856 ms
+  Avg Dijkstra List:    0.305038 ms
+  Avg Ford-Bell. Matrix:45.7833 ms
+  Avg Ford-Bell. List:  43.4461 ms
+-----------------------------------
+V: 350, D: 25%
+  Avg Prim Matrix:      1.06441 ms
+  Avg Prim List:        0.730681 ms
+  Avg Kruskal Matrix:   0.804629 ms
+  Avg Kruskal List:     0.65135 ms
+  Avg Dijkstra Matrix:  0.509766 ms
+  Avg Dijkstra List:    0.214603 ms
+  Avg Ford-Bell. Matrix:118.798 ms
+  Avg Ford-Bell. List:  18.1089 ms
+-----------------------------------
+V: 350, D: 50%
+  Avg Prim Matrix:      1.70051 ms
+  Avg Prim List:        1.31293 ms
+  Avg Kruskal Matrix:   1.40728 ms
+  Avg Kruskal List:     1.15586 ms
+  Avg Dijkstra Matrix:  0.743169 ms
+  Avg Dijkstra List:    0.281742 ms
+  Avg Ford-Bell. Matrix:197.41 ms
+  Avg Ford-Bell. List:  35.9443 ms
+-----------------------------------
+V: 350, D: 99%
+  Avg Prim Matrix:      2.41446 ms
+  Avg Prim List:        2.38951 ms
+  Avg Kruskal Matrix:   2.15597 ms
+  Avg Kruskal List:     2.13896 ms
+  Avg Dijkstra Matrix:  0.419808 ms
+  Avg Dijkstra List:    0.406334 ms
+  Avg Ford-Bell. Matrix:72.5514 ms
+  Avg Ford-Bell. List:  68.7257 ms
+-----------------------------------
